@@ -8,7 +8,7 @@ function recover_words(){
     $my_file = fopen('mots.txt', 'r');
     if ($my_file){
         while (!feof($my_file)){
-            $line = fgets($my_file);
+            $line = trim(fgets($my_file));
             array_push($words_tab, $line);
         }
     fclose ($my_file);
