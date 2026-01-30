@@ -1,0 +1,129 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #1c2b3a, #0f1a24);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+header,
+footer {
+    height: 40px;
+}
+
+main {
+    margin: auto;
+    padding: 40px 35px;
+    background: #fdf1c8;
+    color: #333;
+    border-radius: 18px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+main h1 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 25px;
+    color: #7a2f00;
+}
+
+main h2 {
+    margin-top: 35px;
+    margin-bottom: 12px;
+    font-size: 22px;
+    color: #8b0000;
+}
+
+main p {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #1e7e34;
+}
+
+main form {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+main input[type="text"],
+main select {
+    flex: 1;
+    padding: 10px 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 2px solid #c9a24d;
+    background: #fff;
+}
+
+
+main input[type="submit"] {
+    padding: 10px 22px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #fff;
+    background: #8b0000;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #5a0000;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+
+main input[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #5a0000;
+}
+
+main input[type="submit"]:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #5a0000;
+}
+
+
+main form + h2 {
+    border-top: 2px dashed #c9a24d;
+    padding-top: 30px;
+}
+
+main article{
+    display: flex;
+    justify-content: end;
+    margin-top: 1.5em;
+}
+
+
+.back-to-game {
+    padding: 12px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #fff;
+    background: #2c3e50;
+    border-radius: 10px;
+    text-decoration: none;
+    box-shadow: 0 5px 0 #1b2835;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+
+.back-to-game:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 0 #1b2835;
+}
+
+
+.back-to-game:active {
+    transform: translateY(2px);
+    box-shadow: 0 3px 0 #1b2835;
+}
+

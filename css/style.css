@@ -1,0 +1,315 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Georgia, serif;
+  background-color: rgb(30, 58, 138);
+  line-height: 1.6;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container-title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5em;
+    text-shadow: rgba(0, 0, 0, 0.8) 4px 4px 8px, rgba(251, 191, 36, 0.5) 0px 0px 20px;
+}
+
+.container-title h1{
+    font-size: 3.75em;
+    color: oklch(87.9% 0.169 91.605);
+}
+
+.container-title i{
+    color: white;
+    font-size: 2em;
+    background-color: rgb(78, 47, 98);
+    padding: 0.5em 1em;
+    border-radius: 5px;
+}
+
+header p{
+    color:oklch(92.4% 0.12 95.746);
+    text-align: center;
+    font-size: 1.25em;
+    margin-bottom: 2em;
+}
+
+.main-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-left,
+.main-right{
+  width: 47%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+}
+
+.pirate-container{
+    width: 100%;
+}
+
+.pirate-container img{
+    padding: 2em;
+    background-color: #ffedd4;
+    width: 100%;
+    height: 564px;
+    border: 4px solid #7b3306;
+    border-radius: 0.625rem;
+    object-fit: cover;
+}
+
+.errors{
+  padding: 1em;
+  background-color: oklch(44.4% 0.177 26.899);
+  border: 4px solid oklch(25.8% 0.092 26.042);
+  border-radius: 0.625rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  font-size: 1.5rem;
+  color: white;
+}
+
+.word{
+  padding: 2em;
+  background-color: #ffedd4;
+  width: 100%;
+  border: 4px solid #7b3306;
+  border-radius: 0.625rem;
+  text-align: center;
+}
+
+.word h2,
+.word p{
+  font-weight: 700;
+  color: #7b3306;
+}
+
+.word h2{
+  margin-bottom: 0.25rem;
+  font-size: 1.5rem;
+}
+
+.word p{
+  font-size: 1.875rem;
+  letter-spacing: 1em;
+  text-align: center;
+}
+
+.played-letters{
+  background-color: #cefafe;
+  padding: 2em;
+  border: 4px solid #1c398e;
+  border-radius: 0.625rem;
+  width: 100%;
+  text-align: center;
+}
+
+.played-letters h2{
+  color: #1c398e;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.played-letters p {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #7b3306;
+}
+
+
+.letters {
+    margin: 40px auto;
+    padding: 25px 30px;
+    background: linear-gradient(#fdf1c8, #f6e2a8);
+    border: 6px solid #5b2c06;
+    border-radius: 14px;
+    text-align: center;
+    box-shadow: inset 0 0 0 4px #e7c98a;
+}
+
+
+.letters h2 {
+    margin-bottom: 25px;
+    font-size: 26px;
+    color: #7a2f00;
+}
+
+
+.letters form {
+    margin: 6px;
+}
+
+.letters article{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.letters button {
+    width: 60px;
+    height: 60px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(#d26a00, #b45300);
+    border: 3px solid #7a2f00;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: inset 0 0 0 2px #ffb35c, 0 4px 0 #7a2f00;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+
+.letters button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: inset 0 0 0 2px #ffcc80, 0 6px 0 #7a2f00;
+}
+
+
+.letters button:active:not(:disabled) {
+    transform: translateY(2px);
+    box-shadow:  inset 0 0 0 2px #ffb35c, 0 2px 0 #7a2f00;
+}
+
+
+.letters button:disabled {
+    background: linear-gradient(#b5b5b5, #8e8e8e);
+    border-color: #555;
+    color: #ddd;
+    cursor: not-allowed;
+    box-shadow: inset 0 0 0 2px #ccc;
+}
+
+footer.end-game {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+
+.end-game section {
+    width: 420px;
+    padding: 40px 30px;
+    border-radius: 18px;
+    text-align: center;
+    color: #fff;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+
+.end-game h3 {
+    font-size: 34px;
+    margin-bottom: 15px;
+}
+
+.end-game p {
+    font-size: 18px;
+}
+
+
+.end-game span {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.end-game .defeat {
+    background: linear-gradient(135deg, #b30000, #6b0000);
+}
+
+.end-game .defeat h3 {
+    color: #ffd6d6;
+}
+
+.end-game .defeat span {
+    color: #ffdf3a;
+}
+
+.end-game .victory {
+    background: linear-gradient(135deg, #1e8f3a, #0f5e24);
+}
+
+.end-game .victory h3 {
+    color: #d4ff7a;
+}
+
+.end-game .victory span {
+    color: #fff;
+}
+
+.end-game button {
+    margin-top: 25px;
+    padding: 12px 28px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background: #2c3e50;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 5px 0 #1b2835;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.end-game button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 0 #1b2835;
+}
+
+.end-game button:active {
+    transform: translateY(2px);
+    box-shadow: 0 3px 0 #1b2835;
+}
+
+.options-container{
+    padding: 2em;
+    background-color: cadetblue;
+    width: 100%;
+    border: 4px solid #7b3306;
+    border-radius: 0.625rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.options-container a,
+.options-container form{
+    width: 47%;
+}
+
+.options-container button,
+.options-container a{
+    padding: 0.5em;
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(#d26a00, #b45300);
+    border: 3px solid #7a2f00;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: inset 0 0 0 2px #ffb35c, 0 4px 0 #7a2f00;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}

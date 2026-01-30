@@ -27,7 +27,7 @@ function word_empty($word){
     for ($i=0; $i < strlen($word); $i++) { 
         $new_word .= "_";
     }
-    return $new_word;
+    return trim($new_word);
 }
 
 function display_new_word() {
@@ -36,7 +36,7 @@ function display_new_word() {
 
 function display_played_letters() {
     if (empty($_SESSION["list_played_letters"])) {
-        return "Aucune";
+        return "Aucune lettre pour l'instant";
     }
     $result = "";
     foreach ($_SESSION["list_played_letters"] as $letter) {
@@ -46,7 +46,7 @@ function display_played_letters() {
 }
 
 function number_errors() {
-    return $_SESSION["errors"] . " / 8";
+    return $_SESSION["errors"];
 }
 
 
@@ -95,6 +95,10 @@ if (isset($_POST["reset"])) {
     exit;
 }
 
+if (isset($_POST["abandon"])) {
+    $_SESSION["errors"] = 8;
+}
+
 
 ?>
 
@@ -107,60 +111,95 @@ if (isset($_POST["reset"])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="css/style.css">
     <title>Pendu</title>
 </head>
 <body>
     <header>
-        
+        <section class="container-title">
+            <i class="fa-solid fa-skull-crossbones"></i>
+            <h1>Le Pendu des Pirates</h1>
+            <i class="fa-solid fa-skull-crossbones"></i>
+        </section>
+        <p>À la recherche du trésor perdu...</p>
     </header>
     <main>
-
-        <section>
-            <h2>Mot à trouver</h2>
-            <p style="font-size:2rem; letter-spacing:10px;">
-                <?php echo display_new_word(); ?>
-            </p>
+        <section class="main-container">
+            <div class="main-left">
+                <article class="pirate-container">
+                    <img src="images/pirate<?php echo number_errors(); ?>.png" alt="Image d'un pirate">
+                </article>
+                <article class="errors">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <p>Erreurs : <?php echo number_errors() . " / 8"; ?></p>
+                </article>
+            </div>
+            <div class="main-right">
+                <article class="word">
+                    <div>
+                        <h2>Mot secret</h2>
+                    </div>
+                    <p>
+                        <?php echo display_new_word(); ?>
+                    </p>
+                </article>
+                <article class="played-letters">
+                    <div>
+                        <h2>Lettres déjà essayées</h2>
+                    </div>
+                    <p><?php echo display_played_letters(); ?></p>
+                </article>
+                <article class="options-container">
+                    <a href="admin.php" class="admin-link">Accéder à l'administration</a>
+                    <form method="POST" class="abandon-form">
+                        <button name="abandon">Abandonner la partie</button>
+                    </form>
+                </article>
+            </div>
         </section>
-        <section>
-            <h3>Lettres déjà jouées</h3>
-            <p><?php echo display_played_letters(); ?></p>
-        </section>
-        <section>
-            <h3>Nombre d'errors</h3>
-            <p><?php echo number_errors(); ?></p>
-        </section>
-        <section>
-            <?php
-            if (!str_contains($_SESSION["new_word"], "_")) {
-                echo "<h3>Victoire !</h3>";
-            }
-            if ($_SESSION["errors"] >= 8) {
-                echo "<h3>Perdu ! Le mot était : " . $_SESSION["word"] . "</h3>";
-            }
-            ?>
-        </section>
-        <section>
-            <?php 
-            foreach ($alphabet as $value) {
-                if (in_array($value, $_SESSION["list_played_letters"])) {
-                    $disabled = "disabled";
-                } else {
-                    $disabled = "";
+        <section class="letters">
+            <h2>Choisissez une lettre</h2>
+            <article>
+                <?php 
+                foreach ($alphabet as $value) {
+                    if (in_array($value, $_SESSION["list_played_letters"])) {
+                        $disabled = "disabled";
+                    } else {
+                        $disabled = "";
+                    }
+                    echo '
+                    <form method="POST"">
+                        <input type="hidden" name="lettre" value="' . $value . '">
+                        <button type="submit" ' . $disabled . '>' . $value . '</button>
+                    </form>';
                 }
-                echo '
-                <form method="POST" style="display:inline;">
-                    <input type="hidden" name="lettre" value="' . $value . '">
-                    <button type="submit" ' . $disabled . '>' . $value . '</button>
-                </form>';
-            }
-            ?>
+                ?>
+            </article>
         </section>
     </main>
-    <footer>
-        <form method="POST">
-            <button name="reset">Nouvelle partie</button>
-        </form>
-    </footer>
+    <?php
+    if ($_SESSION["errors"] >= 8 || !str_contains($_SESSION["new_word"], "_")) {
+
+        if ($_SESSION["errors"] >= 8) {
+            $resultClass = "defeat";
+            $message = "<h3>Défaite...</h3><p>Le mot était : <span>" . $_SESSION["word"] . "</span></p>";
+        } else {
+            $resultClass = "victory";
+            $message = "<h3>Victoire !</h3><p>Le trésor est à vous, capitaine ! </p>";
+        }
+
+        echo '
+        <footer class="end-game">
+            <section class="' . $resultClass . '">
+                ' . $message . '
+                <form method="POST">
+                    <button name="reset">Nouvelle partie</button>
+                </form>
+            </section>
+        </footer>';
+    }
+    ?>
+
     
 </body>
 </html>

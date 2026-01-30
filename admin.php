@@ -93,6 +93,7 @@ if (isset($_POST["delete"])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="css/admin.css">
     <title>Pendu - Admin</title>
 </head>
 <body>
@@ -116,9 +117,13 @@ if (isset($_POST["delete"])) {
             </select>
             <input type="submit" name="delete" value="Supprimer">
         </form>
+        <article>
+            <a href="index.php" class="back-to-game">Retour au jeu</a>
+        </article>
+
     </main>
     <footer>
-
+        
     </footer>
 </body>
 </html>
